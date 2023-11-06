@@ -1,8 +1,8 @@
 import pandas as pd
 
-df = pd.read_csv("./app11/hotels.csv", dtype={"id":str})
-df_cards = pd.read_csv("./app11/cards.csv", dtype=str).to_dict(orient="records")
-df_card_security = pd.read_csv("./app11/card_security.csv", dtype=str)
+df = pd.read_csv("./hotels.csv", dtype={"id":str})
+df_cards = pd.read_csv("./cards.csv", dtype=str).to_dict(orient="records")
+df_card_security = pd.read_csv("./card_security.csv", dtype=str)
 
 class Hotel:
     """Takes id input and checks if hotel has an available room and books a room for the user"""
@@ -13,7 +13,7 @@ class Hotel:
     def book_room(self):
         """Books a hotel room by changning its availability to 'no'"""
         df.loc[df["id"] == self.hotel_id, "available"] = "no"
-        df.to_csv("./app11/hotels.csv", index=False)
+        df.to_csv("./hotels.csv", index=False)
 
     def available(self):
         """Checks if hotel is available"""
